@@ -26,9 +26,9 @@ public class ManagerController {
     }
 
     @PutMapping("/api/jobtitle/update/{executiveId}")
-    public void updateJobtitle(@PathVariable long executiveId,
+    public void updateJob(@PathVariable long executiveId,
                               @RequestParam("jobTitle")JobTitle jobTitle){
-        managerService.updateJobtitle(executiveId,jobTitle);
+        managerService.updateJob(executiveId,jobTitle);
 
     }
 

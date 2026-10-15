@@ -1,7 +1,6 @@
 package com.springboot.helpdesk_backend.repository;
 
 import com.springboot.helpdesk_backend.dto.response.CustomerPlanInfoDto;
-import com.springboot.helpdesk_backend.model.Customer;
 import com.springboot.helpdesk_backend.model.CustomerPlan;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface CustomerPlanRepository extends JpaRepository<CustomerPlan,Long> {

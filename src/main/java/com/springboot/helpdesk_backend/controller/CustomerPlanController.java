@@ -2,11 +2,9 @@ package com.springboot.helpdesk_backend.controller;
 
 import com.springboot.helpdesk_backend.dto.request.CustomerPlanDto;
 import com.springboot.helpdesk_backend.dto.response.CustomerPlanInfoDto;
-import com.springboot.helpdesk_backend.service.CustomerService;
 import com.springboot.helpdesk_backend.service.PlanService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

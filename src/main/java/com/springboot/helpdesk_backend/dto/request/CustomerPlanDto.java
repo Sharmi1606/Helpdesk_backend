@@ -1,8 +1,6 @@
 package com.springboot.helpdesk_backend.dto.request;
 
 import com.springboot.helpdesk_backend.enums.PlanType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

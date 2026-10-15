@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class AuthController {
         String token = jwtUtility.generateToken(loggedInUsername);
         return new TokenDto(token,
                 jwtUtility.extractExpiration(token),
-                LocalDateTime.now().toString());
+                LocalDateTime.now(ZoneId.of("UTC")).toString());
     }
 
 

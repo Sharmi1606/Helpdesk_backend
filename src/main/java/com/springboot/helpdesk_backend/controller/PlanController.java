@@ -2,7 +2,6 @@ package com.springboot.helpdesk_backend.controller;
 
 import com.springboot.helpdesk_backend.dto.request.PlanDto;
 import com.springboot.helpdesk_backend.model.Plan;
-import com.springboot.helpdesk_backend.service.CustomerService;
 import com.springboot.helpdesk_backend.service.PlanService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

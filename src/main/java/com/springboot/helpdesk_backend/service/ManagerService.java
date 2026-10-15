@@ -42,7 +42,7 @@ public class ManagerService {
         return managerRepository.getExecutiveStatWithJobTitleAndCount();
     }
 
-    public void updateJobtitle(long executiveId, JobTitle jobTitle) {
+    public void updateJob(long executiveId, JobTitle jobTitle) {
         Executive executive=executiveRepository.findById(executiveId).orElseThrow(()-> new ResourceNotFoundException("Executive Not Found"));
 
         executive.setJobTitle(jobTitle);

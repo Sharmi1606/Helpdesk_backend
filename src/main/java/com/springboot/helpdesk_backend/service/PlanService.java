@@ -17,6 +17,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -46,8 +48,9 @@ public class PlanService {
 
         customerPlan.setCustomer(customer);
         customerPlan.setPlan(plan);
-        customerPlan.setActivationDate(LocalDate.now());
-        customerPlan.setEndDate(LocalDate.now().plusMonths(1));
+        LocalDateTime dt3 = LocalDateTime.now(ZoneId.of("UTC"));
+        customerPlan.setActivationDate(LocalDate.from(dt3));
+        customerPlan.setEndDate(LocalDate.from(dt3).plusMonths(1));
         customerPlan.setAmountPaid(plan.getPrice());
         customerPlanRepository.save(customerPlan);
 
