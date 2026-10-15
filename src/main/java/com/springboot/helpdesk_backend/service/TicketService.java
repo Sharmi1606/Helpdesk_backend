@@ -17,6 +17,7 @@ import com.springboot.helpdesk_backend.repository.CustomerRepository;
 import com.springboot.helpdesk_backend.repository.ExecutiveRepository;
 import com.springboot.helpdesk_backend.repository.TicketRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TicketService {
     private final TicketRepository ticketRepository;
     private final CustomerRepository customerRepository;
@@ -35,16 +37,16 @@ public class TicketService {
     public void add(String customerUsername, TicketDto ticketDto){
         // Step 1: Fetch Customer Object from DB using given customerId
         Customer customer = customerRepository.getByUsername(customerUsername);
-        System.out.println("i am at line 38");
+        log.info("i am at line 38");
         // Step 2: Map TicketDto to Ticket entity
         Ticket ticket = TicketMapper.convertDtoToEntity(ticketDto);
-        System.out.println("i am at line 41");
+        log.info("i am at line 41");
         // Step 3: Attach customer to Ticket
         ticket.setCustomer(customer);
-        System.out.println("i am at line 44");
+        log.info("i am at line 44");
         // Step 3.5: Assign Status as Open to Ticket
         ticket.setStatus(Status.OPEN);
-        System.out.println("i am at line 47");
+        log.info("i am at line 47");
         // Step 4: Insert Ticket in DB
         ticketRepository.save(ticket);
     }

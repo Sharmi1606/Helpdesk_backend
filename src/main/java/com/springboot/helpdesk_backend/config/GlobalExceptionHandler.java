@@ -4,6 +4,8 @@ import com.springboot.helpdesk_backend.dto.response.Errordto;
 import com.springboot.helpdesk_backend.exception.InvalidCallException;
 import com.springboot.helpdesk_backend.exception.OwnershipException;
 import com.springboot.helpdesk_backend.exception.ResourceNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -18,8 +20,13 @@ import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+    Logger log = LoggerFactory.getLogger("GlobalExceptionHandler.class");
+
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Errordto> handleResourceNotFoundException(ResourceNotFoundException e){
+
+        log.warn("Id not found in DB");
         return ResponseEntity
                 .badRequest()
         .body(new Errordto(e.getMessage(),
@@ -36,8 +43,11 @@ public class GlobalExceptionHandler {
         Map<String,String> map=new HashMap<>();
         BindingResult bindingResult=e.getBindingResult();
         List<FieldError> list=bindingResult.getFieldErrors();
-        list.forEach(fieldError -> map.put(fieldError.getField(),
-                fieldError.getDefaultMessage()));
+        list.forEach(fieldError -> {
+                    map.put(fieldError.getField(), fieldError.getDefaultMessage());
+                    log.warn("Field {} , failed validation: {}", fieldError.getField(),fieldError.getDefaultMessage());
+                }
+        );
         return ResponseEntity
                 .badRequest()
                 .body(map);
